@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Seifa2011_2016_API.Interfaces;
 using Seifa2011_2016_API.Models;
-using System.Linq;
 
 namespace Seifa2011_2016_API.Repositories
 {
@@ -80,6 +79,25 @@ namespace Seifa2011_2016_API.Repositories
                 .ToListAsync();
 
             return seifaRecords;
+        }
+
+        public async Task<IEnumerable<string>> GetDashboardStats()
+        {
+            var maxDisadvantage2011 = _context.Seifa2011s.Max(x => x.RelativeDisadvantage);
+
+            var maxAdvantage2011 = _context.Seifa2011s.Max(x => x.RelativeAdvantage);
+            var maxDisadvantage2016 = _context.Seifa2016s.Max(x => x.IndexOfRelativeSocioEconomicDisadvantageScore);
+            var maxAdvantage2016 = _context.Seifa2016s.Max(x => x.IndexOfRelativeSocioEconomicAdvantageDisadvantageScore);
+
+            List<string> dashboardList = new List<string>
+            {
+                maxDisadvantage2011.ToString(),
+                maxAdvantage2011.ToString(),
+                maxDisadvantage2016.ToString(),
+                maxAdvantage2016.ToString()
+            };
+
+            return dashboardList;
         }
 
         public bool Seifa2011Exists(int id)
