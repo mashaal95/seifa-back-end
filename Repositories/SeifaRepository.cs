@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Seifa2011_2016_API.Interfaces;
 using Seifa2011_2016_API.Models;
+using System.Linq;
 
 namespace Seifa2011_2016_API.Repositories
 {
@@ -55,6 +56,8 @@ namespace Seifa2011_2016_API.Repositories
 
         public async Task<IEnumerable<object>> GetSeifaRecordsForEachState(string state)
         {
+
+
             var seifa2011Filtered = _context.Seifa2011s.Where(x => x.LocalGovtAreas != null && x.LocalGovtAreas.Equals(state));
 
 

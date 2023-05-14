@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddEntityFrameworkInMemoryDatabase();
 
 builder.Services.AddDbContext<TestDbContext>(option =>
     option.UseSqlServer("Data Source=localhost;Initial Catalog=TestDB;User id=sa;Password=7Times=10!;TrustServerCertificate=Yes;MultipleActiveResultSets=true"));
