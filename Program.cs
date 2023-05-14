@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Seifa2011_2016_API.Interfaces;
 using Seifa2011_2016_API.Models;
+using Seifa2011_2016_API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<TestDbContext>(option =>
     option.UseSqlServer("Data Source=localhost;Initial Catalog=TestDB;User id=sa;Password=7Times=10!;TrustServerCertificate=Yes;MultipleActiveResultSets=true"));
+
+
+// Register ISeifaRepository
+builder.Services.AddScoped<ISeifaRepository, SeifaRepository>();
 
 
 
