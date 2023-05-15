@@ -80,10 +80,11 @@ dotnet add package Microsoft.EntityFrameworkCore.SqlServer
     dotnet ef dbcontext scaffold "Data Source=localhost;Initial Catalog=TestDB;User id=sa;Password=7Times=10!;TrustServerCertificate=Yes" Microsoft.EntityFrameworkCore.SqlServer
 ```
 ### Modify the database schema
-Add a SeifaID column to the seifa2011 table for the 2011 dataset.
-Make the LGA_Code column a primary key for the seifa2016 table.
+- Add a SeifaID column to the seifa2011 table for the 2011 dataset.
+- Make the LGA_Code column a primary key for the seifa2016 table.
+- The reason why this is done, is to allow the dotnet libraries to scaffold the controllers for the next part
 
-### Scaffold the controllers:
+### Scaffold the sample controllers:
 ``` powershell
     dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design -v 7.0.0
     dotnet add package Microsoft.EntityFrameworkCore.Design -v 7.0.0
